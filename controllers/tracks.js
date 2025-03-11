@@ -27,8 +27,28 @@ router.get('/', async (req, res) => {
 });
 
 
-
 // SHOW SPECIFIC TRACK - READ - GET - /tracks/:id
+
+router.get('/:id', async (req, res) => {
+    try {
+        
+        const foundTrack = await Track.findById(req.params.id);
+        
+        if (!foundTrack) {
+            res.status(404)
+            throw new Error('Pet not found.');
+        }
+
+        res.status(200).json(foundTrack);
+    } catch (err) {
+        if (res.statusCode === 404) {
+            res.json({ err: err.message });
+        } else {
+            res.status(500).json({ err: err.message });
+        }
+    }
+});
+
 
 // DELETE - /tracks/:id
 
