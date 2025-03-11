@@ -68,7 +68,25 @@ router.delete('/:id', async (req, res) => {
 
 // UPDATE - PUT - /tracks/:id
 
+router.put('/:id', async (req, res) => {
+    try {
+        
+        const updatedTrack = await Track.findByIdAndUpdate(req.params.id, req.body);
 
+        if (!updatedTrack) {
+            res.status(404);
+            throw new Error('Track not found');
+        }
+
+        res.status(200).json(updatedTrack);
+    } catch (err) {
+        if (res.statusCode === 404) {
+            res.json({ err: err.message });
+        } else {
+            res.status(500).json({ err: err.message });
+        }
+    }
+});
 
 
 //=============================================================
