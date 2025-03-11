@@ -10,14 +10,21 @@ You’ll implement full CRUD operations, allowing users to interact freely with 
 Technical stack
 Node.js and Express: The back-end will be built using Node.js with Express to handle server-side logic and HTTP requests.
 MongoDB and Mongoose: Use MongoDB as the database for storing track data, with Mongoose in your Node app to provide schema validation.
+
 Necessary middleware
+
 CORS middleware: Implement CORS middleware to enable cross-origin requests, ensuring the React frontend can interact seamlessly with the Express back-end.
 Method Override middleware: Implement Method Override middleware so you’re able to use HTTP verbs such as PUT and DELETE.
+
 express.json() middleware: Implement Express’ built-in express.json() middleware to parse incoming requests with JSON payloads.
 API requirements
+
 One model - full CRUD: The application will manage a single model, Track, which will support full CRUD operations.
+
 Asynchronous processing: All routes must utilize async/await to handle asynchronous operations properly.
+
 Error handling: Each route must include try/catch blocks to catch and handle errors effectively.
+
 Track model entity
 Field	Type	Required	Description
 title	String	Yes	The title of the track.
@@ -29,6 +36,7 @@ GET	index	200	/tracks	List all tracks
 GET	show	200	/tracks/:id	Get a single track
 PUT	update	200	/tracks/:id	Update a track
 DELETE	delete	200	/tracks/:id	Delete a track
+
 1. Add a new track
 Endpoint: POST /tracks
 Function: Adds a new track to the database.
@@ -41,18 +49,21 @@ Copy
   "title": "Track Title",
   "artist": "Artist Name",
 }
+
 2. Get all tracks
 Endpoint: GET /tracks
 Function: Retrieves a list of all tracks.
 Response: An array of track objects.
 Success status code: 200 OK
 Error status code: 500 Internal Server Error
+
 3. Get a single track
 Endpoint: GET /tracks/:id
 Function: Retrieves details of a specific track using its ID.
 Response: A single track object.
 Success status code: 200 OK
 Error status code: 500 Internal Server Error
+
 4. Update a track
 Endpoint: PUT /tracks/:id
 Function: Updates an existing track.
@@ -65,6 +76,7 @@ Copy
   "title": "New Track Title",
   "artist": "New Artist Name",
 }
+
 5. Delete a Track
 Endpoint: DELETE /tracks/:id
 Function: Deletes a track from the database.
