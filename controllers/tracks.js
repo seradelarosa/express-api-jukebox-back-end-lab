@@ -35,8 +35,8 @@ router.get('/:id', async (req, res) => {
         const foundTrack = await Track.findById(req.params.id);
         
         if (!foundTrack) {
-            res.status(404)
-            throw new Error('Pet not found.');
+            res.status(404);
+            throw new Error('Track not found.');
         }
 
         res.status(200).json(foundTrack);
@@ -55,6 +55,11 @@ router.get('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         const deletedTrack = await Track.findByIdAndDelete(req.params.id);
+
+        if (!deletedTrack) {
+            res.status(404);
+            throw new Error('Track not found');
+        }
 
         res.status(200).json(`Successfully deleted ${deletedTrack}.`);
     } catch (err) {
