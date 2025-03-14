@@ -76,7 +76,11 @@ router.delete('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         
-        const updatedTrack = await Track.findByIdAndUpdate(req.params.id, req.body);
+        const updatedTrack = await Track.findByIdAndUpdate(
+            req.params.id, 
+            req.body,
+            { new: true }
+        );
 
         if (!updatedTrack) {
             res.status(404);
